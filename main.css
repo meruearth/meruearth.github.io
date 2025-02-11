@@ -1,0 +1,240 @@
+:root {
+    /* Colors */
+    --primary-bg: #1a1a1a;
+    --secondary-bg: #141414;
+    --border-color: #262626;
+    --text-primary: #ffffff;
+    --text-secondary: #98989a;
+    --accent-color: #ffd11a;
+    --purple-accent: #5e5598;
+    --pink-accent: #9b5192;
+
+    /* Typography */
+    --font-inter: 'Inter', sans-serif;
+    --font-kumbh: 'Kumbh Sans', sans-serif;
+    
+    /* Spacing */
+    --spacing-xs: 10px;
+    --spacing-sm: 20px;
+    --spacing-md: 40px;
+    --spacing-lg: 80px;
+    
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Основные стили для центрирования через класс overall */
+:root {
+    --max-width: 1440px;
+    --side-padding: 162px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+}
+
+.overall {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--side-padding);
+    box-sizing: border-box;
+    background-color: #1a1a1a;
+}
+
+/* Адаптивный дизайн */
+@media (max-width: 1440px) {
+    .overall {
+        padding: 0 80px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .overall {
+        padding: 0 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .overall {
+        padding: 0 20px;
+    }
+}
+
+body {
+    font-family: var(--font-inter);
+    background: #000;
+    color: var(--text-primary);
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+/* Loader */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--border-color);
+    border-top-color: var(--accent-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Hero Section */
+.hero {
+    padding: var(--spacing-lg) var(--spacing-lg);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-family: var(--font-kumbh);
+    font-size: 80px;
+    color: var(--purple-accent);
+    letter-spacing: -2.4px;
+    line-height: 1.2;
+}
+
+.hero-content {
+    display: flex;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+}
+
+.hero-subtitle {
+    font-family: var(--font-kumbh);
+    font-size: 80px;
+    color: var(--pink-accent);
+    letter-spacing: -2.4px;
+    line-height: 1.2;
+}
+
+.hero-description {
+    flex: 1;
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 500px;
+}
+
+/* Stats Section */
+.stats {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-lg) var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 60px;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 18px;
+}
+
+.stat-divider {
+    width: 1px;
+    background-color: var(--border-color);
+}
+
+/* Animations */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to { 
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+.animate-on-scroll.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .hero-title, .hero-subtitle {
+        font-size: 48px;
+    }
+
+    .hero-content {
+        flex-direction: column;
+    }
+
+    .stats {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .stat-divider {
+        height: 1px;
+        width: 100%;
+    }
+}
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    mix-blend-mode: difference;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+    z-index: 9999;
+}
+
+.cursor-hover {
+    width: 40px;
+    height: 40px;
+}
